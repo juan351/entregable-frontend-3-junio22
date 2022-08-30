@@ -1,3 +1,7 @@
+import React, {useState} from 'react'
+import Cabecera from './components/Cabecera.js'
+import Listado from './components/Listado.js'
+
 // El componente App es el padre de:
 // - Cabecera
 // - Listado
@@ -7,10 +11,16 @@
 
 function App() {
 
+  const [cantidadElementos, setCantidadElementos] = useState(0);
+
+  const agregarElementos = () =>{
+    setCantidadElementos(cantidadElementos + 1);
+  }
+
   return (
     <div className="App">
-      <Cabecera />
-      <Listado />
+      <Cabecera cantidadElementos={cantidadElementos}/>
+      <Listado agregarElementos={agregarElementos}/>
     </div>
   );
 }
